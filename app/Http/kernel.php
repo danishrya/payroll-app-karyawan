@@ -8,6 +8,10 @@ class Kernel extends HttpKernel
 {
     // ... kode middleware groups dan middleware lainnya ...
 
+    protected $routeMiddleware = [
+    // other middleware
+    'role' => \App\Http\Middleware\RoleMiddleware::class,
+];
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

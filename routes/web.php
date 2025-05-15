@@ -7,6 +7,12 @@ use App\Http\Controllers\Admin\KaryawanCrudController;
 use App\Http\Controllers\Admin\AbsensiAdminController;
 use App\Http\Controllers\Admin\GajiAdminController;
 use Illuminate\Support\Facades\Auth; // Tambahkan ini
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
+// Di route/web.php
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin', [AdminDashboardController::class, 'index']);
+});
 
 Route::get('/', function () {
     if (Auth::check()) {
